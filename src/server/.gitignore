@@ -1,0 +1,35 @@
+# Python
+*.py[co]
+*.log
+
+# Folders
+*__pycache__*
+.vscode
+venv
+migrations
+
+# Files
+*.db
+
+# Installer Logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+
+#Translations
+*.mo
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
