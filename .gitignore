@@ -10,6 +10,7 @@ migrations
 
 # Files
 *.db
+secret.conf
 
 # Installer Logs
 pip-log.txt
