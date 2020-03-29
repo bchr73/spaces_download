@@ -30,7 +30,7 @@ class SpacesConfig:
 
     def load_config(self):
         try:
-            with open('config', 'r') as f:
+            with open('secret.conf', 'r') as f:
                 env = []
                 lines = f.read().splitlines()
                 for line in lines:
