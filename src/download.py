@@ -1,6 +1,13 @@
+import threading
+
 import boto3
-from config import SpacesConfig
+import botocore
+
+from config import Boto3Config
 from observer import Observer, DownloadCompleteObserver, Observable
+from contract import Contract
+
+
 
 class Download(Observable):
     """Class for keeping track of active downloads.
