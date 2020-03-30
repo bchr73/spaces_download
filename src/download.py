@@ -76,6 +76,7 @@ class DownloadManager(Boto3Config):
     """
 
     def __init__(self) -> None:
+        super().__init__()
         self.ready_queue = {}
         self.download_queue = {}
         self.complete_queue = {}
