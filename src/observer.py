@@ -51,4 +51,4 @@ class Observable(ABC):
     def notify(self) -> None:                                                                                                                                                 
         """Notify all observers about an event.                                                                                                                               
         """
-
+        pass
