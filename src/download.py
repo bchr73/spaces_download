@@ -71,6 +71,23 @@ class Download(Observable):
         for observer in self._observers:
             observer.update(self)
 
+class ProgressTracker(threading.Thread):
+    """Simple class that accepts a dict and displays formatted output
+       of contents.
+
+    Attributes:
+        to_track: Object of type dict containing information for active downloads
+    """
+
+    def __init__(self, to_track: Dict) -> None:
+        self.to_track = to_track
+
+    def run(self):
+        while True:
+            time.sleep(2)
+            for uuid, progress in self.to_track.items():
+                print(f'{uuid}: {progress}')
+
 class DownloadManager(Boto3Config):
     """Class for keeping track of active downloads.
 
