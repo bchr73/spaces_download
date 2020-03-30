@@ -31,8 +31,7 @@ class Download(Observable):
         _observers: List object containing all subscribed observers.
     """
 
-    def __init__(self, client: botocore.client, contract: Contract) -> None:
-        self.client = client
+    def __init__(self, contract: Contract) -> None:
         self.id = contract.id
         self.bucket = contract.bucket
         self.key = contract.key
