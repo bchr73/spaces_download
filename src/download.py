@@ -67,7 +67,7 @@ class Download(Observable):
         for observer in self._observers:
             observer.update(self)
 
-class DownloadManager(SpacesConfig):
+class DownloadManager(Boto3Config):
     """Class for keeping track of active downloads.
 
     Attributes:
