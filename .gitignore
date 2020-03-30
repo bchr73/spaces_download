@@ -4,13 +4,14 @@
 
 # Folders
 *__pycache__*
+*.mypy_cache*
 .vscode
 venv
 migrations
 
 # Files
 *.db
-secret.conf
+boto3.conf
 
 # Installer Logs
 pip-log.txt
