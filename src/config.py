@@ -26,5 +26,5 @@ class Boto3Config:
                     env += line.split('=')
                 env = iter(env)
                 return dict(zip(env,env))
-        except FileNotFoundException:
+        except FileNotFoundError:
             print('Config file missing')
