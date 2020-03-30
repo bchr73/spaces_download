@@ -1,6 +1,9 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
-from download import Download
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from download import Download
 
 class Observer(ABC):
     """The Obvserver interface declares the update method, used by downloads.
