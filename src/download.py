@@ -48,6 +48,7 @@ class Download(Observable):
         """Callback function to update newly transferred bytes on download."""
         with self._lock:
             self._bytes_transferred += new_bytes
+            self.notify()
 
     def start(self) -> str:
         """Initiates file download."""
