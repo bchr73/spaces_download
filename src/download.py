@@ -50,10 +50,10 @@ class Download(Observable):
             self._bytes_transferred += new_bytes
             self.notify()
 
-    def start(self) -> str:
+    def start(self, client: botocore.client) -> None:
         """Initiates file download."""
-        self.client.download_file(Bucket=self.bucket, 
-                       Key=self.key, 
+        client.download_file(Bucket=self.bucket,
+                       Key=self.key,
                        Filename=self.filename,
                        ExtraArgs=self.extra_args,
                        Callback=self.progress)
