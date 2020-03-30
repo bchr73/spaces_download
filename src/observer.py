@@ -10,6 +10,10 @@ class Observer(ABC):
     """
 
     @abstractmethod
+    def __init__(self, callback) -> None:
+        pass
+
+    @abstractmethod
     def update(self, download: Download) -> None:
         """Receive update from download.
         """
