@@ -1,5 +1,5 @@
-class SpacesConfig:
-    """DigitalOcean Spaces configuration object/loader.
+class Boto3Config:
+    """Boto3 Client configuration object/loader.
 
     Attributes:
         bucket: String containing Digital Ocean Spaces bucket name.
@@ -19,7 +19,7 @@ class SpacesConfig:
 
     def load_config(self):
         try:
-            with open('secret', 'r') as f:
+            with open('boto3.conf', 'r') as f:
                 env = []
                 lines = f.read().splitlines()
                 for line in lines:
