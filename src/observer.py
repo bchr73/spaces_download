@@ -10,7 +10,7 @@ class Observer(ABC):
     """
 
     @abstractmethod
-    def update(self, download: 'Download') -> None:
+    def update(self, download: Download) -> None:
         """Receive update from download.
         """
         pass
@@ -19,7 +19,7 @@ class DownloadCompleteObserver(Observer):
     """Observer, reacts to download transferred bytes == total bytes.
     """
 
-    def update(self, download: 'Download') -> None:
+    def update(self, download: Download) -> None:
         if download._bytes_transferred == download._size:
             print(f'Download {download.id} complete.')
 
