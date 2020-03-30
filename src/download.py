@@ -126,9 +126,24 @@ class DownloadManager(Boto3Config):
         self.complete_queue.put(download)
 
     def start(self):
-        """Start downloads in ready queue and move to download_queue."""
-        for uuid in list(self.ready_queue):
-            download = self.ready_queue[uuid]
-            download.attach(DownloadCompleteObserver())
-            download.start()
-            self.download_queue[uuid] = self.ready_queue.pop(uuid)
+        """Initiates download process by:
+            1. Dequeing downloads from download_queue.
+            2. Attaching downloads with observers.
+            3. Moving downloads to ready_queue.
+            4. Starting 'progress' thread.
+            4. Starting Connection-Pool.
+        """
+        for _ in range(self.download_queue.qsize()):
+            download = self.download_queue.get()
+            self.attach_observers(download)
+            self.ready_queue.put(download)
+
+        # start progress tracker thread
+        progress_tracker = ProgressTracker(self.progress_map)
+        progress_tracker.start()
+
+        #TODO: start connection-pool
+
+        # join threads
+        #TODO: join connection-pool
+        progress_tracker.join()
