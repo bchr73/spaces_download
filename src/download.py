@@ -42,7 +42,7 @@ class Download(Observable):
         self._bytes_transferred = 0
         self._lock = threading.Lock()
 
-        self._observers = []
+        self._observers: List = []
 
     def progress(self, new_bytes) -> None:
         """Callback function to update newly transferred bytes on download."""
