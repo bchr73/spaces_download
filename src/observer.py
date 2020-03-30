@@ -23,8 +23,12 @@ class DownloadCompleteObserver(Observer):
     """Observer, reacts to download transferred bytes == total bytes.
     """
 
+    def __init__(self, callback) -> None:
+        self.callback = callback
+
     def update(self, download: Download) -> None:
         if download._bytes_transferred == download._size:
+            self.callback(download)
             print(f'Download {download.id} complete.')
 
 class Observable(ABC):              
