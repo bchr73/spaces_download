@@ -98,9 +98,12 @@ class DownloadManager(Boto3Config):
 
     def __init__(self) -> None:
         super().__init__()
-        self.ready_queue = {}
-        self.download_queue = {}
-        self.complete_queue = {}
+        self.download_queue: queue.Queue = queue.Queue()
+        self.ready_queue: queue.Queue = queue.Queue()
+        self.complete_queue: queue.Queue = queue.Queue()
+
+        self.progress_map: Dict = {}
+
         self.client = boto3.client('s3',
                                    region_name=self.region_name,
                                    endpoint_url=self.endpoint_url,
