@@ -1,13 +1,17 @@
+import queue
+import time
 import threading
+from typing import TYPE_CHECKING, List, Dict
 
 import boto3
-import botocore
 
 from config import Boto3Config
-from observer import Observer, DownloadCompleteObserver, Observable
+from observer import DownloadCompleteObserver, Observable
 from contract import Contract
 
-
+if TYPE_CHECKING:
+    import Observer
+    import botocore
 
 class Download(Observable):
     """Class for keeping track of active downloads.
