@@ -112,7 +112,18 @@ class DownloadManager(Boto3Config):
 
     def submit(self, contract: Contract) -> None:
         """Submit new Contract to Download Manager for remote file."""
-        self.ready_queue[contract.id] = Download(client=self.client, contract=contract)
+        self.download_queue.put(Download(contract=contract))
+
+    def attach_observers(self, download: Download):
+        observers = [
+            DownloadCompleteObserver(self.move_to_complete_queue)
+        ]
+        for ob in observers:
+            download.attach(ob)
+        return download
+
+    def move_to_complete_queue(self, download: Download):
+        self.complete_queue.put(download)
 
     def start(self):
         """Start downloads in ready queue and move to download_queue."""
