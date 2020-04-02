@@ -1,3 +1,8 @@
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from typing import List
+
 class Boto3Config:
     """Boto3 Client configuration object/loader.
 
@@ -20,7 +25,7 @@ class Boto3Config:
     def load_config(self):
         try:
             with open('boto3.conf', 'r') as f:
-                env = []
+                env: List[str] = []
                 lines = f.read().splitlines()
                 for line in lines:
                     env += line.split('=')
