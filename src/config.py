@@ -20,7 +20,6 @@ class Boto3Config:
 
         #self.root_folder = config.get('ROOT_FOLDER')
         #self.dest_folder = config.get('DEST_FOLDER')
-        print(self.__dict__)
 
     def load_config(self):
         try:
